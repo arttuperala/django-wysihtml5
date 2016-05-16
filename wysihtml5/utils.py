@@ -5,7 +5,10 @@ import re
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.functional import allow_lazy
-from django.utils.importlib import import_module
+try:
+    from importlib import import_module
+except ImportError:
+    from django.utils.importlib import import_module  # Django 1.6 / py2.6
 
 
 def get_function(function_path):
