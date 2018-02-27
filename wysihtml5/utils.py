@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import re
 
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.functional import allow_lazy
+from django.utils.functional import keep_lazy
 try:
     from importlib import import_module
 except ImportError:
@@ -34,4 +34,5 @@ def keeptags(value, tags):
             return ''
 
     return re.sub(r'</?([^> ]+).*?>', _replacer, value)
-keeptags = allow_lazy(keeptags)
+
+keeptags = keep_lazy(())(keeptags)

@@ -163,6 +163,13 @@ class Wysihtml5TextareaWidget(AdminTextareaWidget):
 
         super(Wysihtml5TextareaWidget, self).__init__(attrs=attrs)
 
+    def build_attrs(self, extra_attrs=None, **kwargs):
+        """ Helper function for building an attribute dictionary."""
+        attrs = dict(self.attrs, **kwargs)
+        if extra_attrs:
+            attrs.update(extra_attrs)
+        return attrs
+
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         final_attrs = self.build_attrs(attrs, name=name)
