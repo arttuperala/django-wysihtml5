@@ -1,5 +1,3 @@
-#-*- coding: utf-8 -*-
-
 from wysihtml5.fields import Wysihtml5TextField
 from wysihtml5.widgets import Wysihtml5TextareaWidget
 

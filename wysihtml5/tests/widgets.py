@@ -1,6 +1,3 @@
-#-*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from bs4 import BeautifulSoup, NavigableString
 
 from django.forms.models import modelform_factory
