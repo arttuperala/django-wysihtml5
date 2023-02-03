@@ -5,18 +5,11 @@ import six
 
 from django.contrib.admin.widgets import AdminTextareaWidget
 import django
-if django.VERSION >= (1,7):
-    from django.forms.utils import flatatt
-else:
-    from django.forms.util import flatatt
-try:
-    from django.utils.encoding import force_text
-except ImportError:
-    # Django < 1.4.2
-    from django.utils.encoding import force_unicode as force_text
+from django.forms.utils import flatatt
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from wysihtml5.conf import settings
 from wysihtml5.utils import get_function
@@ -175,7 +168,7 @@ class Wysihtml5TextareaWidget(AdminTextareaWidget):
         final_attrs = self.build_attrs(attrs, name=name)
         textarea_widget = '<textarea%s>%s</textarea>' % (
             flatatt(final_attrs),
-            conditional_escape(force_text(value)))
+            conditional_escape(force_str(value)))
         wid = final_attrs.get('id', 'unknown')
         toolbar_widget = self.render_toolbar_widget(wid)
         pos = wid.find('__prefix__')
