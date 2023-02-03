@@ -1,5 +1,3 @@
-import six
-
 from django.contrib.admin.widgets import AdminTextareaWidget
 import django
 from django.forms.utils import flatatt
@@ -140,7 +138,7 @@ class Wysihtml5TextareaWidget(AdminTextareaWidget):
 
         self.render_cmd_icon = {}
         self.render_cmd_dialog = {}
-        for k, v in six.iteritems(self.toolbar_settings):
+        for k, v in self.toolbar_settings.items():
             if v.get("active", False):
                 self.render_cmd_icon[k] = v.get("render_icon", 
                                                 "wysihtml5.widgets.render_blank")
